@@ -293,6 +293,59 @@
   }
   footer span{color:var(--accent)}
 
+  /* INFO CARDS */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .info-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .info-card:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+  }
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 20px;
+  }
+  .icon-loc { background: rgba(0, 255, 200, 0.15); color: var(--accent); }
+  .icon-edu { background: rgba(255, 189, 46, 0.15); color: #ffbd2e; }
+  .icon-focus { background: rgba(168, 85, 247, 0.15); color: var(--accent-2); }
+  
+  .info-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .info-val {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .info-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
   /* Reveal */
   .reveal{opacity:0;transform:translateY(30px);transition:.7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
@@ -345,7 +398,7 @@
         <h1><span class="prompt">&gt;</span> Hello, I'm <span class="grad">Roshni Roy</span><span class="cursor"></span></h1>
         <div class="line"><span class="prompt">$</span> role --current</div>
         <div style="font-size:18px;margin:6px 0 4px">&gt; I am a <span class="typed" id="typed"></span><span class="cursor"></span></div>
-        <p class="tagline">// BCA 2nd Year Student · BNB Chain Hackathon @ IIT Delhi · building clean code &amp; cleaner UI.</p>
+        <p class="tagline">// BCA 2nd Year Student · Hackathon Enthusiast · building clean code &amp; cleaner UI.</p>
         <a href="#projects" class="cta" style="margin-top:20px">▶ View My Work</a>
       </div>
     </div>
@@ -364,11 +417,33 @@
         </div>
       </div>
       <div class="bio reveal">
-        <p>Hey! I'm <strong>Roshni Roy</strong>, a <strong>BCA 2nd Year</strong> student passionate about crafting full-stack experiences that look as good as they perform.</p>
-        <p>I work across <strong>Full Stack Development</strong>, <strong>UI Design</strong>, and explore <strong>AI tooling</strong>. Recently, I participated in the <strong>BNB Chain Hackathon at IIT Delhi</strong> — an experience that pushed my skills further.</p>
-        <p>When I'm not coding, I'm designing interfaces or editing videos.</p>
+        <p style="font-size: 18px; line-height: 1.8; color: var(--text); opacity: 0.9;">
+          I'm <strong>Roshni Roy</strong>, a <strong>BCA 2nd Year</strong> student and a passionate <strong>Hackathon Enthusiast</strong>. I love crafting <strong>Full Stack</strong> experiences and <strong>UI Designs</strong> that are both functional and beautiful. I thrive in fast-paced environments, constantly learning and building projects that solve real-world problems.
+        </p>
+
+        <div class="info-grid">
+          <!-- Location -->
+          <div class="info-card">
+            <div class="info-icon icon-loc">📍</div>
+            <span class="info-label">Location</span>
+            <div class="info-val">India</div>
+          </div>
+          <!-- Education -->
+          <div class="info-card">
+            <div class="info-icon icon-edu">🎓</div>
+            <span class="info-label">Education</span>
+            <div class="info-val">BCA (2024-2027)</div>
+            <div class="info-sub">Pursuing</div>
+          </div>
+          <!-- Focus -->
+          <div class="info-card">
+            <div class="info-icon icon-focus">🎯</div>
+            <span class="info-label">Current Focus</span>
+            <div class="info-val">Full-Stack Growth</div>
+          </div>
+        </div>
         
-        <div class="skill-category">
+        <div class="skill-category" style="margin-top: 40px;">
           <span class="skill-cat-title">Frontend & Design</span>
           <div class="chips">
             <span class="chip">HTML/CSS</span>
@@ -418,14 +493,14 @@
 
       <!-- Project 2 -->
       <div class="proj-card reveal">
-        <div class="proj-img">BNB Chain Hackathon [Image]</div>
+        <div class="proj-img">Web3 Innovation [Image]</div>
         <div class="proj-content">
           <div class="proj-tags">
             <span class="proj-tag">Web3</span>
             <span class="proj-tag">Blockchain</span>
           </div>
-          <h3 class="proj-title">Hackathon Prototype</h3>
-          <p class="proj-desc">Developed at IIT Delhi, this prototype explores Web3 solutions on the BNB Chain.</p>
+          <h3 class="proj-title">Web3 Hackathon Project</h3>
+          <p class="proj-desc">Developed during a high-pressure hackathon, this prototype explores innovative Web3 solutions and blockchain integration.</p>
           <div class="proj-links">
             <a href="https://github.com/roshni26-commits" class="proj-link">GitHub ↗</a>
           </div>
@@ -489,27 +564,7 @@
     <h2 class="section-title reveal"><span class="hash">#</span> resume<span class="hash">()</span></h2>
     <p class="section-sub reveal">// education · hackathon · project · certificates</p>
     <div class="timeline">
-      <div class="t-item reveal">
-        <div class="glass">
-          <span class="t-tag">Education</span>
-          <div class="t-title">Bachelor of Computer Applications (BCA)</div>
-          <div class="t-meta">2nd Year · Currently Pursuing</div>
-        </div>
-      </div>
-      <div class="t-item reveal">
-        <div class="glass">
-          <span class="t-tag">Hackathon</span>
-          <div class="t-title">BNB Chain Hackathon — IIT Delhi</div>
-          <div class="t-meta">Participated · Web3 &amp; Blockchain</div>
-        </div>
-      </div>
-      <div class="t-item reveal">
-        <div class="glass">
-          <span class="t-tag">Project</span>
-          <div class="t-title">Gym Membership Registration Page</div>
-          <div class="t-meta">Full Stack · HTML, CSS, JavaScript, Backend integration</div>
-        </div>
-      </div>
+      <!-- Resume content will be added here later -->
     </div>
   </div>
 </section>
