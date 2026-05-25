@@ -142,6 +142,11 @@
     background:var(--accent);color:#000;
     box-shadow:0 0 25px rgba(0,255,200,0.5);transform:translateY(-2px);
   }
+  .cta.secondary{border-color:var(--accent-2);color:var(--accent-2)}
+  .cta.secondary:hover{
+    background:var(--accent-2);color:#fff;
+    box-shadow:0 0 25px rgba(168,85,247,0.5);
+  }
 
   /* SECTIONS */
   section{padding:100px 24px;position:relative}
@@ -494,7 +499,10 @@
         <div class="line"><span class="prompt">$</span> role --current</div>
         <div style="font-size:18px;margin:6px 0 4px">&gt; I am a <span class="typed" id="typed"></span><span class="cursor"></span></div>
         <p class="tagline">// BCA 2nd Year Student · Hackathon Enthusiast · building clean code &amp; cleaner UI.</p>
-        <a href="#projects" class="cta" style="margin-top:20px">▶ View My Work</a>
+        <div style="display:flex; gap:15px; margin-top:20px; flex-wrap:wrap">
+          <a href="#projects" class="cta">▶ View My Work</a>
+          <a href="#" class="cta secondary">⬇ Download CV</a>
+        </div>
       </div>
     </div>
   </div>
@@ -645,7 +653,35 @@
     <h2 class="section-title reveal"><span class="hash">#</span> resume<span class="hash">()</span></h2>
     <p class="section-sub reveal">// education · hackathon · project · certificates</p>
     <div class="timeline">
-      <!-- Resume content will be added here later -->
+      <!-- Education -->
+      <div class="t-item reveal">
+        <div class="glass">
+          <span class="t-tag">Education</span>
+          <h3 class="t-title">Bachelor of Computer Applications (BCA)</h3>
+          <p class="t-meta">United Institute of Management (FUGS) · 2024 — 2027</p>
+          <p style="font-size:13px; color:var(--muted); margin-top:8px;">Currently in 2nd Year. Focusing on Full-Stack Development, Data Structures, and UI/UX Principles.</p>
+        </div>
+      </div>
+
+      <!-- Hackathons -->
+      <div class="t-item reveal">
+        <div class="glass">
+          <span class="t-tag">Achievements</span>
+          <h3 class="t-title">Hackathon Enthusiast & Participant</h3>
+          <p class="t-meta">Various Platforms · 2024 — Present</p>
+          <p style="font-size:13px; color:var(--muted); margin-top:8px;">Actively participating in global hackathons like BNB Chain Hackathons. Building prototypes and collaborating with teams to solve real-world problems.</p>
+        </div>
+      </div>
+
+      <!-- Experience/Projects -->
+      <div class="t-item reveal">
+        <div class="glass">
+          <span class="t-tag">Self-Learning</span>
+          <h3 class="t-title">Full Stack Development Journey</h3>
+          <p class="t-meta">Self-Paced · 2023 — Present</p>
+          <p style="font-size:13px; color:var(--muted); margin-top:8px;">Mastering modern web technologies including HTML5, CSS3, JavaScript (ES6+), and exploring AI Prompt Engineering for optimized workflows.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
