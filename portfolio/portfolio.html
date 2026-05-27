@@ -163,51 +163,49 @@
   header.hero{
     position:relative;min-height:100vh;display:flex;align-items:center;
     overflow:hidden;background:var(--bg);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(0, 255, 200, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.05) 0px, transparent 50%);
   }
-  #matrix{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.45}
   .hero-inner{
     position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 24px 60px;width:100%;
   }
-  .terminal{
-    background:rgba(10,10,15,0.85);
-    border:1px solid var(--panel-border);
-    border-radius:10px;
-    box-shadow: 0 0 40px rgba(0,255,200,0.1), inset 0 0 20px rgba(0,255,200,0.05);
-    max-width:780px;backdrop-filter:blur(10px);
-    overflow:hidden;
-    position: relative;
+  .hero-content{
+    max-width:800px;
   }
-  .terminal::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(0, 255, 200, 0.05) 0%, transparent 10%, transparent 90%, rgba(0, 255, 200, 0.05) 100%);
-    pointer-events: none;
+  .hero-label{
+    display:inline-block;
+    padding:6px 12px;
+    background:rgba(0,255,200,0.1);
+    color:var(--accent);
+    border-radius:4px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-bottom:20px;
+    text-transform:uppercase;
   }
-  .term-bar{
-    display:flex;align-items:center;gap:8px;
-    padding:10px 14px;background:rgba(255,255,255,0.04);
-    border-bottom:1px solid rgba(255,255,255,0.06);
+  .hero-content h1{
+    font-size:clamp(36px,8vw,72px);font-weight:700;color:var(--text);
+    margin-bottom:20px;line-height:1.1;
   }
-  .term-bar .dot{width:12px;height:12px;border-radius:50%}
-  .d1{background:#ff5f56}.d2{background:#ffbd2e}.d3{background:#27c93f}
-  .term-title{margin-left:10px;font-size:12px;color:var(--muted)}
-  .term-body{padding:22px 22px 28px;font-size:15px}
-  .term-body .line{color:var(--muted);margin-bottom:6px}
-  .term-body .prompt{color:var(--accent)}
-  .term-body h1{
-    font-size:clamp(28px,5vw,46px);font-weight:700;color:var(--text);
-    margin:10px 0 12px;line-height:1.15;
-  }
-  .term-body h1 .grad{
+  .hero-content h1 .grad{
     background:linear-gradient(90deg,var(--accent),var(--accent-2));
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
+  .hero-content .sub-text{
+    font-size:clamp(18px,3vw,24px);
+    color:var(--muted);
+    margin-bottom:30px;
+    max-width:600px;
+  }
+  .hero-content .sub-text span{color:var(--accent-2); font-weight:600;}
+  
   .cursor{display:inline-block;width:10px;height:1.1em;background:var(--accent);
     transform:translateY(3px);margin-left:4px;animation:blink 1s steps(2) infinite}
   @keyframes blink{50%{opacity:0}}
   .typed{color:var(--accent-2);font-weight:600}
-  .tagline{color:var(--muted);margin:14px 0 22px;font-size:14px}
+  .tagline{color:var(--muted);margin:14px 0 22px;font-size:14px; opacity:0.8;}
   .cta{
     display:inline-flex;align-items:center;gap:10px;
     padding:12px 22px;border-radius:8px;
@@ -650,21 +648,15 @@
 
 <!-- HOME -->
 <header class="hero" id="home">
-  <canvas id="matrix"></canvas>
   <div class="hero-inner">
-    <div class="terminal">
-      <div class="term-bar">
-        <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
-        <span class="term-title">roshni@portfolio: ~</span>
+    <div class="hero-content">
+      <span class="hero-label reveal">Available for Projects</span>
+      <h1 class="reveal">Hello, I'm <br><span class="grad">Roshni Roy</span><span class="cursor"></span></h1>
+      <div class="sub-text reveal">
+        I am a <span class="typed" id="typed"></span><span class="cursor"></span>
       </div>
-      <div class="term-body">
-        <div class="line"><span class="prompt">$</span> whoami</div>
-        <h1><span class="prompt">&gt;</span> Hello, I'm <span class="grad">Roshni Roy</span><span class="cursor"></span></h1>
-        <div class="line"><span class="prompt">$</span> role --current</div>
-        <div style="font-size:18px;margin:6px 0 4px">&gt; I am a <span class="typed" id="typed"></span><span class="cursor"></span></div>
-        <p class="tagline">// BCA 2nd Year Student · Hackathon Enthusiast · building clean code &amp; cleaner UI.</p>
-        <a href="#projects" class="cta" style="margin-top:20px">▶ View My Work</a>
-      </div>
+      <p class="tagline reveal">// BCA 2nd Year Student · Hackathon Enthusiast · building clean code &amp; cleaner UI.</p>
+      <a href="#projects" class="cta reveal" style="margin-top:20px">▶ View My Work</a>
     </div>
   </div>
 </header>
@@ -1058,44 +1050,6 @@
       }, 2000);
     });
   }
-
-  // Matrix rain
-  const canvas = document.getElementById('matrix');
-  const ctx = canvas.getContext('2d');
-  let w, h, cols, drops;
-  const chars = 'アァカサタナハマヤラワ0123456789{}[]<>/=+*!?#$%&_'.split('');
-  function resize(){
-    w = canvas.width = canvas.offsetWidth;
-    h = canvas.height = canvas.offsetHeight;
-    cols = Math.floor(w / 16);
-    drops = Array(cols).fill(0).map(() => Math.random() * -100);
-  }
-  function draw(){
-    ctx.fillStyle = 'rgba(13,13,13,0.1)';
-    ctx.fillRect(0,0,w,h);
-    ctx.font = '14px Fira Code, monospace';
-    for(let i=0;i<cols;i++){
-      const ch = chars[Math.floor(Math.random()*chars.length)];
-      const x = i*16, y = drops[i]*16;
-      
-      // Glow effect for some characters
-      if(Math.random() > 0.95) {
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#00FFC8';
-      } else {
-        ctx.shadowBlur = 0;
-      }
-
-      ctx.fillStyle = Math.random() > 0.98 ? '#A855F7' : '#00FFC8';
-      ctx.fillText(ch, x, y);
-      if(y > h && Math.random() > 0.98) drops[i] = 0;
-      drops[i]++;
-    }
-    requestAnimationFrame(draw);
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  draw();
 </script>
 </body>
 </html>
