@@ -918,7 +918,10 @@
       <div class="socials reveal">
         <div style="margin-bottom: 10px;">
           <span style="font-size: 12px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 5px;">Direct Mail</span>
-          <a href="mailto:roshni.roy280710@gmail.com" style="font-size: 15px; color: var(--text); font-family: var(--mono); word-break: break-all; transition: 0.25s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">roshni.roy280710@gmail.com</a>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <a href="mailto:roshni.roy280710@gmail.com" id="email-text" style="font-size: 15px; color: var(--text); font-family: var(--mono); word-break: break-all; transition: 0.25s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">roshni.roy280710@gmail.com</a>
+            <button onclick="copyEmail()" style="background: none; border: 1px solid var(--panel-border); color: var(--muted); padding: 4px 8px; border-radius: 4px; font-size: 10px; cursor: pointer; transition: 0.2s;" id="copy-btn">Copy</button>
+          </div>
         </div>
         <a href="https://github.com/roshni26-commits" target="_blank" rel="noopener" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/></svg>
@@ -1038,6 +1041,22 @@
     btn.style.color = '#000';
     e.target.reset();
     setTimeout(() => { btn.textContent = original; btn.style.background=''; btn.style.color=''; }, 2400);
+  }
+
+  // Copy Email
+  function copyEmail() {
+    const email = document.getElementById('email-text').textContent;
+    navigator.clipboard.writeText(email).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      btn.style.borderColor = 'var(--accent)';
+      btn.style.color = 'var(--accent)';
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.style.borderColor = 'var(--panel-border)';
+        btn.style.color = 'var(--muted)';
+      }, 2000);
+    });
   }
 
   // Matrix rain
