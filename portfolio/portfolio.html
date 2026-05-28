@@ -223,7 +223,20 @@
     background:var(--accent);color:#000;
     box-shadow:0 0 25px rgba(0,255,200,0.5);transform:translateY(-2px);
   }
-  .cta.secondary{border-color:var(--accent-2);color:var(--accent-2)}
+  .cta {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 200, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 200, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 200, 0); }
+  }
+  .cta.secondary{border-color:var(--accent-2);color:var(--accent-2); animation: pulse-purple 2s infinite;}
+  @keyframes pulse-purple {
+    0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(168, 85, 247, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+  }
   .cta.secondary:hover{
     background:var(--accent-2);color:#fff;
     box-shadow:0 0 25px rgba(168,85,247,0.5);
