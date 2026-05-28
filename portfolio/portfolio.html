@@ -892,18 +892,18 @@
     <h2 class="section-title reveal"><span class="hash">#</span> contact<span class="hash">()</span></h2>
     <p class="section-sub reveal">// let's build something together</p>
     <div class="contact-grid">
-      <form class="reveal" id="contactForm" onsubmit="handleSubmit(event)">
+      <form class="reveal" id="contactForm" action="https://formspree.io/f/xvgzvjza" method="POST">
         <div class="field">
           <label for="name">Name</label>
-          <input id="name" type="text" required placeholder="Your name"/>
+          <input id="name" name="name" type="text" required placeholder="Your name"/>
         </div>
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" type="email" required placeholder="you@example.com"/>
+          <input id="email" name="email" type="email" required placeholder="you@example.com"/>
         </div>
         <div class="field">
           <label for="message">Message</label>
-          <textarea id="message" required placeholder="Say hello..."></textarea>
+          <textarea id="message" name="message" required placeholder="Say hello..."></textarea>
         </div>
         <button type="submit" class="cta" style="align-self:flex-start">▶ Send Message</button>
       </form>
@@ -1024,16 +1024,50 @@
   sections.forEach(s => spy.observe(s));
 
   // Contact form
-  function handleSubmit(e){
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button');
     const original = btn.textContent;
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = 'var(--accent)';
-    btn.style.color = '#000';
-    e.target.reset();
-    setTimeout(() => { btn.textContent = original; btn.style.background=''; btn.style.color=''; }, 2400);
-  }
+    
+    const data = new FormData(e.target);
+    
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(e.target.action, {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = 'var(--accent)';
+        btn.style.color = '#000';
+        e.target.reset();
+      } else {
+        btn.textContent = '⚠ Error Occurred';
+        btn.style.borderColor = 'var(--danger)';
+        btn.style.color = 'var(--danger)';
+      }
+    } catch (error) {
+      btn.textContent = '⚠ Connection Error';
+      btn.style.borderColor = 'var(--danger)';
+      btn.style.color = 'var(--danger)';
+    }
+
+    setTimeout(() => { 
+      btn.textContent = original; 
+      btn.style.background=''; 
+      btn.style.color=''; 
+      btn.style.borderColor='';
+      btn.disabled = false;
+    }, 3000);
+  });
 
   // Copy Email
   function copyEmail() {
