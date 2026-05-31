@@ -588,6 +588,31 @@
   .socials a.em:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 20px rgba(0,255,200,0.2); }
   .socials svg{width:20px;height:20px;flex-shrink:0}
 
+  /* CODE SNIPPET */
+  .code-section {
+    margin-top: 60px;
+    background: #0d0d12;
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .code-header {
+    background: rgba(255,255,255,0.03);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .code-body { padding: 20px; font-family: var(--mono); font-size: 14px; line-height: 1.6; color: #d1d1d1; }
+  .code-keyword { color: #ff79c6; }
+  .code-func { color: #50fa7b; }
+  .code-string { color: #f1fa8c; }
+  .code-comment { color: #6272a4; }
+
+  /* FOOTER */
   footer{
     text-align:center;padding:30px 20px;color:var(--muted);font-size:12px;
     border-top:1px solid rgba(255,255,255,0.05);
@@ -967,10 +992,34 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+    </div>
 
-<!-- TESTIMONIALS -->
+    <!-- Featured Code Snippet -->
+    <div class="code-section reveal">
+      <div class="code-header">
+        <div class="code-dots">
+          <div class="code-dot" style="background: #ff5f56;"></div>
+          <div class="code-dot" style="background: #ffbd2e;"></div>
+          <div class="code-dot" style="background: #27c93f;"></div>
+        </div>
+        <span style="font-size: 11px; color: var(--muted); font-family: var(--mono);">clean_code.js</span>
+      </div>
+      <div class="code-body">
+        <span class="code-keyword">const</span> <span class="code-func">portfolio</span> = {<br>
+        &nbsp;&nbsp;name: <span class="code-string">"Roshni Roy"</span>,<br>
+        &nbsp;&nbsp;focus: <span class="code-string">"Full Stack & AI"</span>,<br>
+        &nbsp;&nbsp;motto: <span class="code-string">"Code with passion, design with purpose"</span>,<br>
+        &nbsp;&nbsp;<span class="code-func">isHiring</span>: <span class="code-keyword">true</span>,<br>
+        &nbsp;&nbsp;<span class="code-func">build</span>: () => {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Transforming ideas into reality...</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Success"</span>;<br>
+        &nbsp;&nbsp;}<br>
+        };
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
     <h2 class="section-title reveal"><span class="hash">#</span> testimonials<span class="hash">()</span></h2>
